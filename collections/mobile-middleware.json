@@ -12,35 +12,6 @@
       "description": "",
       "item": [
         {
-          "_postman_id": "a521e1be-b6b2-e1ab-066f-e73ff2cf1eaf",
-          "name": "hassubaccount",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "c8b582ce-ed7e-49cf-b1e1-e5206b3957df",
-                "type": "text/javascript",
-                "exec": [
-                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
-                  "",
-                  "",
-                  "var jsonData = JSON.parse(responseBody);",
-                  "",
-                  "tests[\"exists equals true\"] = /true/.test(jsonData.exists)"
-                ]
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {},
-            "url": "{{environment}}/authentication/hassubaccount/{{userFull}}",
-            "description": "Asks the MW if the user has an account. If \"exists\" equals \"true\" it means the user has been found on the backend."
-          },
-          "response": []
-        },
-        {
           "_postman_id": "11188f4e-1668-47f2-f21e-89ff3ac0bbb3",
           "name": "/authentication/customers/login",
           "event": [
@@ -106,6 +77,35 @@
               ]
             },
             "description": "Login as {{userFull}}, verify status code = 200, Verify success = true,\nGets token from response and stores it as environment variable \"login-token\""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a521e1be-b6b2-e1ab-066f-e73ff2cf1eaf",
+          "name": "hassubaccount",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c8b582ce-ed7e-49cf-b1e1-e5206b3957df",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "",
+                  "",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"exists equals true\"] = /true/.test(jsonData.exists)"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": "{{environment}}/authentication/hassubaccount/{{userFull}}",
+            "description": "Asks the MW if the user has an account. If \"exists\" equals \"true\" it means the user has been found on the backend."
           },
           "response": []
         },
