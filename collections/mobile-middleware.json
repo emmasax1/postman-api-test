@@ -1,0 +1,278 @@
+{
+  "info": {
+    "name": "mobile-middleware",
+    "_postman_id": "1718cede-8e9a-5651-2344-8b46efb0f15e",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "0eb68e43-bfa3-aff7-8d16-3f8db2b436c6",
+      "name": "Login",
+      "description": "",
+      "item": [
+        {
+          "_postman_id": "a521e1be-b6b2-e1ab-066f-e73ff2cf1eaf",
+          "name": "hassubaccount",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "c8b582ce-ed7e-49cf-b1e1-e5206b3957df",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "",
+                  "",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"exists equals true\"] = /true/.test(jsonData.exists)"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": "{{environment}}/authentication/hassubaccount/{{userFull}}",
+            "description": "Asks the MW if the user has an account. If \"exists\" equals \"true\" it means the user has been found on the backend."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "11188f4e-1668-47f2-f21e-89ff3ac0bbb3",
+          "name": "/authentication/customers/login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b31f3744-11d7-4a90-bd4f-621b1f00e51a",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "",
+                  "",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "",
+                  "tests[\"dt is Present\"] = _.has(jsonData, \"dt\");",
+                  "tests[\"ts is Present\"] = _.has(jsonData, \"ts\");",
+                  "tests[\"success is Present\"] = _.has(jsonData, \"success\");",
+                  "tests[\"message is Present\"] = _.has(jsonData, \"message\");",
+                  "tests[\"token is Present\"] = _.has(jsonData.message, \"token\");",
+                  "tests[\"sipid is Present\"] = _.has(jsonData.message, \"sipid\");",
+                  "",
+                  "tests[\"success equals true\"] = /true/.test(jsonData.success)",
+                  "",
+                  "",
+                  "pm.environment.set(\"login-token\", jsonData.message.token);",
+                  "",
+                  "//tests[`Response: ${JSON.stringify(jsonData)}`] = true;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{environment}}/authentication/customers/login?email={{userFull}}&password={{userFullPassword}}&userdata= HTTP/1.1",
+              "host": [
+                "{{environment}}"
+              ],
+              "path": [
+                "authentication",
+                "customers",
+                "login"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "{{userFull}}",
+                  "equals": true
+                },
+                {
+                  "key": "password",
+                  "value": "{{userFullPassword}}",
+                  "equals": true
+                },
+                {
+                  "key": "userdata",
+                  "value": " HTTP/1.1",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "Login as {{userFull}}, verify status code = 200, Verify success = true,\nGets token from response and stores it as environment variable \"login-token\""
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "a69003f3-16b9-6609-e5de-37152f50b446",
+          "name": "/players",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "7648223c-8156-45e3-9958-a81aaf39d0b4",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "",
+                  "",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "//Validates that the object in position [0] in the JSON response is an SSU user and has all fields",
+                  "tests[\"PersonIdOfMostRecentPhoto is Present for SSU player\"] = _.has(jsonData[0],\"PersonIdOfMostRecentPhoto\");",
+                  "tests[\"LeagueIdOfMostRecentPhoto is Present for SSU player\"] = _.has(jsonData[0],\"LeagueIdOfMostRecentPhoto\");",
+                  "tests[\"HasPlayerCard is Present for SSU player\"] = _.has(jsonData[0],\"HasPlayerCard\");",
+                  "tests[\"Type is Present for SSU player\"] = _.has(jsonData[0],\"Type\");",
+                  "tests[\"ss is Present for SSU player\"] = _.has(jsonData[0],\"ss\");",
+                  "tests[\"ssid is Present for SSU player\"] = _.has(jsonData[0],\"ssid\");",
+                  "tests[\"id is Present for SSU player\"] = _.has(jsonData[0],\"id\");",
+                  "tests[\"firstname is Present for SSU player\"] = _.has(jsonData[0],\"firstname\");",
+                  "tests[\"lastname is Present for SSU player\"] = _.has(jsonData[0],\"lastname\");",
+                  "tests[\"image_url is Present for SSU player\"] = _.has(jsonData[0],\"image_url\");",
+                  "tests[\"isFavorite is Present for SSU player\"] = _.has(jsonData[0],\"isFavorite\");",
+                  "",
+                  "//Validates that the object in position [1] in the JSON response is an LA user and has all fields",
+                  "tests[\"ss is Present for LA player\"] = _.has(jsonData[1],\"ss\");",
+                  "tests[\"ssid is Present for LA player\"] = _.has(jsonData[1],\"ssid\");",
+                  "tests[\"id is Present for LA player\"] = _.has(jsonData[1],\"id\");",
+                  "tests[\"firstname is Present for LA player\"] = _.has(jsonData[1],\"firstname\");",
+                  "tests[\"lastname is Present for LA player\"] = _.has(jsonData[1],\"lastname\");",
+                  "tests[\"image_url is Present for LA player\"] = _.has(jsonData[1],\"image_url\");",
+                  "tests[\"start_ts is Present for LA player\"] = _.has(jsonData[1],\"start_ts\");",
+                  "tests[\"end_ts is Present for LA player\"] = _.has(jsonData[1],\"end_ts\");",
+                  "tests[\"Type is Present for LA player\"] = _.has(jsonData[1],\"Type\");",
+                  "tests[\"HasPlayerCard is Present for LA player\"] = _.has(jsonData[1],\"HasPlayerCard\");",
+                  "tests[\"isFavorite is Present for LA player\"] = _.has(jsonData[1],\"isFavorite\");"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "authentication-token",
+                "value": "{{login-token}}",
+                "description": "Must be set by Login test first"
+              }
+            ],
+            "body": {},
+            "url": "{{environment}}/players",
+            "description": "Hits the /players endpoint, verifies status = 200, verifies all the player fields are present for SSU and LA players."
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "248b1a23-8841-4896-b55b-633e96d7cd79",
+          "name": "/events",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "f8130517-425d-488b-8b20-3447f503fe39",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;"
+                ]
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "9e7fd159-6c9b-4123-8239-49ad4a9407b2",
+                "type": "text/javascript",
+                "exec": [
+                  ""
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "authentication-token",
+                "value": "{{login-token}}",
+                "description": "Must be set by Login test first"
+              }
+            ],
+            "body": {},
+            "url": "{{environment}}/events",
+            "description": "Hits the /events endpoint, validates that status code = 200. TBD add schema validation"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "e2cb189e-6e57-5a52-fa7b-69562e9f11ea",
+          "name": "/teams",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "authentication-token",
+                "value": "{{login-token}}",
+                "description": "Must be set by Login test first"
+              }
+            ],
+            "body": {},
+            "url": "{{environment}}/teams",
+            "description": "Hits the /teams endpoint, validates that status code = 200. TBD add schema validation"
+          },
+          "response": []
+        },
+        {
+          "_postman_id": "27599cff-9f4a-a360-853f-941789b4493d",
+          "name": "/standalone (expected true)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5366e9a1-366e-4b30-b736-c46a5884f119",
+                "type": "text/javascript",
+                "exec": [
+                  "tests[\"Status code is 200\"] = responseCode.code === 200;",
+                  "",
+                  "",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"createTeam equals true\"] = /true/.test(jsonData.createTeam)"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "authentication-token",
+                "value": "{{login-token}}",
+                "description": "Must be set by Login test first"
+              }
+            ],
+            "body": {},
+            "url": "{{environment}}/standalone",
+            "description": "Hits the /standalone endpoint which determines permissions for users to create standalone teams. This test expects the response to return \"true\"."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
