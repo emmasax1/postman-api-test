@@ -1,0 +1,34 @@
+{
+  "id": "fbeb1442-0b62-76bc-f782-e96b0c4f7fa4",
+  "name": "middleware_production",
+  "values": [
+    {
+      "enabled": true,
+      "key": "userFull",
+      "type": "text",
+      "value": "matiask.qa@gmail.com"
+    },
+    {
+      "enabled": true,
+      "key": "userFullPassword",
+      "type": "text",
+      "value": "123qweasd"
+    },
+    {
+      "enabled": true,
+      "key": "environment",
+      "type": "text",
+      "value": "https://middleware-player.siplay.com"
+    },
+    {
+      "enabled": true,
+      "key": "login-token",
+      "type": "text",
+      "value": "31f0252e0acd815f535e56d2f0b10a4330919952c366db4df6a8cedbc40c4705b6a4e48979fb153699f300ebef4d3a85cb0cbef88e4beabcb36974ab0747d4e1"
+    }
+  ],
+  "timestamp": 1515701346218,
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2018-01-15T16:19:26.237Z",
+  "_postman_exported_using": "Postman/5.5.0"
+}
