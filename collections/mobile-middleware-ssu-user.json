@@ -140,39 +140,6 @@
       "response": []
     },
     {
-      "_postman_id": "34950667-d32c-0949-bd79-ef8ce0922b6e",
-      "name": "{{environment}}/tasks",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "f182a0bd-f3b5-408d-8300-3d8c4e7f91ab",
-            "type": "text/javascript",
-            "exec": [
-              "tests[\"Status code is 200\"] = responseCode.code === 200;",
-              "",
-              "var jsonData = JSON.parse(responseBody);",
-              "",
-              "tests[\"Verifies family invite task is present\"] = /family_invite/.test(jsonData[0].taskType)"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "authentication-token",
-            "value": "{{login-token}}"
-          }
-        ],
-        "body": {},
-        "url": "{{environment}}/tasks",
-        "description": null
-      },
-      "response": []
-    },
-    {
       "_postman_id": "d8a5a48e-4458-a5a8-6c1a-e7092611c05b",
       "name": "{{environment}}/players",
       "event": [
@@ -318,6 +285,39 @@
         ],
         "body": {},
         "url": "{{environment}}/teams",
+        "description": null
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "34950667-d32c-0949-bd79-ef8ce0922b6e",
+      "name": "{{environment}}/tasks",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "f182a0bd-f3b5-408d-8300-3d8c4e7f91ab",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "var jsonData = JSON.parse(responseBody);",
+              "",
+              "tests[\"Verifies family invite task is present\"] = /family_invite/.test(jsonData[0].taskType)"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "authentication-token",
+            "value": "{{login-token}}"
+          }
+        ],
+        "body": {},
+        "url": "{{environment}}/tasks",
         "description": null
       },
       "response": []
