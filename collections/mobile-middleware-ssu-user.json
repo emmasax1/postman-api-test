@@ -1,0 +1,359 @@
+{
+  "info": {
+    "name": "mobile-middleware-ssu-user",
+    "_postman_id": "fc3268f1-1596-8e7a-78a6-93a892905316",
+    "description": "",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "_postman_id": "d51276da-386e-6eee-842a-422ae8e0c7aa",
+      "name": "/authentication/customers/login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "b31f3744-11d7-4a90-bd4f-621b1f00e51a",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "",
+              "var jsonData = JSON.parse(responseBody);",
+              "",
+              "",
+              "tests[\"dt is Present\"] = _.has(jsonData, \"dt\");",
+              "tests[\"ts is Present\"] = _.has(jsonData, \"ts\");",
+              "tests[\"success is Present\"] = _.has(jsonData, \"success\");",
+              "tests[\"message is Present\"] = _.has(jsonData, \"message\");",
+              "tests[\"token is Present\"] = _.has(jsonData.message, \"token\");",
+              "tests[\"sipid is Present\"] = _.has(jsonData.message, \"sipid\");",
+              "",
+              "tests[\"success equals true\"] = /true/.test(jsonData.success)",
+              "",
+              "",
+              "pm.environment.set(\"login-token\", jsonData.message.token);",
+              "",
+              "//tests[`Response: ${JSON.stringify(jsonData)}`] = true;"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": {
+          "raw": "{{environment}}/authentication/customers/login?email={{userSSU}}&password={{userSSUPassword}}&userdata= HTTP/1.1",
+          "host": [
+            "{{environment}}"
+          ],
+          "path": [
+            "authentication",
+            "customers",
+            "login"
+          ],
+          "query": [
+            {
+              "key": "email",
+              "value": "{{userSSU}}",
+              "equals": true
+            },
+            {
+              "key": "password",
+              "value": "{{userSSUPassword}}",
+              "equals": true
+            },
+            {
+              "key": "userdata",
+              "value": " HTTP/1.1",
+              "equals": true
+            }
+          ]
+        },
+        "description": "Login as {{userFull}}, verify status code = 200, Verify success = true,\nGets token from response and stores it as environment variable \"login-token\""
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "06e6f0fa-0285-b914-0bd3-2b9d03eea105",
+      "name": "{{environment}}/hassubaccount/[user email]",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "c8b582ce-ed7e-49cf-b1e1-e5206b3957df",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "",
+              "var jsonData = JSON.parse(responseBody);",
+              "",
+              "tests[\"exists equals true\"] = /true/.test(jsonData.exists)"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": "{{environment}}/authentication/hassubaccount/{{userFull}}",
+        "description": "Asks the MW if the user has an account. If \"exists\" equals \"true\" it means the user has been found on the backend."
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "4885af53-c3fb-8cff-feb9-4ed250fc86d1",
+      "name": "{{environment}}/hassubaccount/invalid@email.com",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4aed4f8e-3b3d-4cca-bd2b-5f2d6ac1f76d",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "",
+              "var jsonData = JSON.parse(responseBody);",
+              "",
+              "tests[\"exists equals true\"] = /false/.test(jsonData.exists)"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": "{{environment}}/authentication/hassubaccount/invalid@email.com",
+        "description": "Asks the MW for an unexisting user email. \"exists\" should return \"false\""
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "34950667-d32c-0949-bd79-ef8ce0922b6e",
+      "name": "{{environment}}/tasks",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "f182a0bd-f3b5-408d-8300-3d8c4e7f91ab",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "var jsonData = JSON.parse(responseBody);",
+              "",
+              "tests[\"Verifies family invite task is present\"] = /family_invite/.test(jsonData[0].taskType)"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "authentication-token",
+            "value": "{{login-token}}"
+          }
+        ],
+        "body": {},
+        "url": "{{environment}}/tasks",
+        "description": null
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "d8a5a48e-4458-a5a8-6c1a-e7092611c05b",
+      "name": "{{environment}}/players",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "d8e069b7-922e-4bb3-ab4c-604a36f6dd66",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "var jsonData = JSON.parse(responseBody);",
+              "",
+              "tests[\"[Parent]Validates person ID in Most Recent Photo\"] = /15296174/.test(jsonData[0].PersonIdOfMostRecentPhoto);",
+              "tests[\"[Parent]Validates league ID in Most Recent Photo\"] = /15000452/.test(jsonData[0].LeagueIdOfMostRecentPhoto);",
+              "tests[\"[Parent]Player card is false\"] = /false/.test(jsonData[0].HasPlayerCard);",
+              "tests[\"[Parent]Type of account is Adult\"] = /Adult/.test(jsonData[0].Type);",
+              "tests[\"[Parent]Validates SS attribute\"] = /SS/.test(jsonData[0].ss);",
+              "tests[\"[Parent]Validates ssid\"] = /12942394/.test(jsonData[0].ssid);",
+              "tests[\"[Parent]Validates id\"] = /SS-12942394/.test(jsonData[0].id);",
+              "tests[\"[Parent]Validates First Name\"] = /Parent/.test(jsonData[0].firstname);",
+              "tests[\"[Parent]Validates Last Name\"] = /Account/.test(jsonData[0].lastname);",
+              "",
+              "pm.test(\"Validates image URL\", function () { ",
+              "    pm.expect(jsonData[0].image_url).to.contain(\"https://app1.siplay.com//Files/PersonCSImage\"); ",
+              "});",
+              "",
+              "tests[\"[Child 1]Validates person ID is NULL in Most Recent Photo\"] = /null/.test(jsonData[1].PersonIdOfMostRecentPhoto);",
+              "tests[\"[Child 1]Validates league ID is NULL Most Recent Photo\"] = /null/.test(jsonData[1].LeagueIdOfMostRecentPhoto);",
+              "tests[\"[Child 1]Player card is true\"] = /true/.test(jsonData[1].HasPlayerCard);",
+              "tests[\"[Child 1]Type of account is Child\"] = /Child/.test(jsonData[1].Type);",
+              "tests[\"[Child 1]Validates ssid\"] = /12942407/.test(jsonData[1].ssid);",
+              "tests[\"[Child 1]Validates id\"] = /SS-12942407/.test(jsonData[1].id);",
+              "tests[\"[Child 1]Validates First Name\"] = /Timothy/.test(jsonData[1].firstname);",
+              "tests[\"[Child 1]Validates Last Name\"] = /Account/.test(jsonData[1].lastname);",
+              "",
+              "//if favorites functionality is included back into the apps, we should add a validation for isFavorite",
+              "",
+              "",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "authentication-token",
+            "value": "{{login-token}}"
+          }
+        ],
+        "body": {},
+        "url": "{{environment}}/players",
+        "description": null
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "d8fcbac1-df8e-ae29-7587-eae4252b949e",
+      "name": "{{environment}}/teams",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "fa560d2f-f413-4959-be34-b170e977ae8a",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "var jsonData = JSON.parse(responseBody);",
+              "",
+              "tests[\"[Team 1]Validates SS attribute\"] = /SS/.test(jsonData[0].ss);",
+              "tests[\"[Team 1]Validates SS ID attribute\"] = /1008381/.test(jsonData[0].ssid);",
+              "tests[\"[Team 1]Validates SIP ID attribute\"] = /SS-1008381/.test(jsonData[0].sipid);",
+              "",
+              "pm.test(\"[Team 1]Validates Small logo url\", function () { ",
+              "    pm.expect(jsonData[0].small_logo_url).to.equal(\"https://ssu-images.s3.amazonaws.com/f18ca47e-3380-4758-8cb9-05408f7b4e80_large.jpg\"); ",
+              "});",
+              "",
+              "tests[\"[Team 1]Verifies Medium logo url is present\"] = _.has(jsonData[0],\"medium_logo_url\");",
+              "tests[\"[Team 1]Verifies Large logo url is present\"] = _.has(jsonData[0],\"large_logo_url\");",
+              "",
+              "//medium_logo_url and large_logo_url data will be validated once we figure out why they are returning the same url",
+              "",
+              "tests[\"[Team 1]Validates Team RGB 1\"] = /c6e74a/.test(jsonData[0].team_rgb_1);",
+              "tests[\"[Team 1]Validates Team RGB 2\"] = /1e1e1e/.test(jsonData[0].team_rgb_2);",
+              "",
+              "//short_name is not being used",
+              "",
+              "tests[\"[Team 1]Validates Manager NM\"] = /Champions Youth Baseball League/.test(jsonData[0].manager_nm);",
+              "pm.test(\"[Team 1]Validates Banner Large\", function () { ",
+              "    pm.expect(jsonData[0].banner_large).to.equal(\"https://ssu-images.s3.amazonaws.com/66e0589a-96b7-46d5-b25e-88b28d3476d7_large.jpg\");",
+              "});",
+              "",
+              "//Validating that the attribute banner_small exists since the url between this one and banner large are the same",
+              "",
+              "tests[\"[Team 1]Verifies Banner Small is present\"] = _.has(jsonData[0],\"banner_small\");",
+              "tests[\"[Team 1]Validates Privileges\"] = /1023/.test(jsonData[0].privileges);",
+              "tests[\"[Team 1]Validates Name\"] = /QA Test 1/.test(jsonData[0].name);",
+              "tests[\"[Team 1]Validates Status\"] = /1/.test(jsonData[0].status);",
+              "tests[\"[Team 1]Validates Team Active\"] = /true/.test(jsonData[0].team_active);",
+              "tests[\"[Team 1]Validates Status Name\"] = /active/.test(jsonData[0].status_name);",
+              "tests[\"[Team 1]Validates Session Active\"] = /false/.test(jsonData[0].session_active);",
+              "tests[\"[Team 1]Validates name of the League\"] = /Champions Youth Baseball League/.test(jsonData[0].league);",
+              "tests[\"[Team 1]Validates session group ID\"] = /1012611/.test(jsonData[0].sessionGroupId);",
+              "tests[\"[Team 1]Validates session group name\"] = /Quantum QAers/.test(jsonData[0].sessionGroupName);",
+              "tests[\"[Team 1]Validates session group gender\"] = /M/.test(jsonData[0].sessionGroupGender);",
+              "tests[\"[Team 1]Validates division ID\"] = /null/.test(jsonData[0].divisionId);",
+              "tests[\"[Team 1]Validates session ID\"] = /220977/.test(jsonData[0].sessionId);",
+              "tests[\"[Team 1]Validates session name\"] = /Bambino Buddy Ball 2018/.test(jsonData[0].sessionName);",
+              "tests[\"[Team 1]Validates Time Zone ID\"] = /Eastern Standard Time/.test(jsonData[0].timeZoneId);",
+              "tests[\"[Team 1]Validates Organization ID\"] = /null/.test(jsonData[0].organizationId);",
+              "tests[\"[Team 1]Validates Season\"] = /Bambino Buddy Ball 2018/.test(jsonData[0].season);",
+              "tests[\"[Team 1]Validates Season Start\"] = /1522540800000/.test(jsonData[0].season_starts);",
+              "tests[\"[Team 1]Validates Season Ends\"] = /1532822400000/.test(jsonData[0].season_ends);",
+              "tests[\"[Team 1]Validates City\"] = /Oshawa Southwest/.test(jsonData[0].city);",
+              "tests[\"[Team 1]Validates State\"] = /ON/.test(jsonData[0].state);",
+              "tests[\"[Team 1]Validates Country\"] = /CA/.test(jsonData[0].country);",
+              "tests[\"[Team 1]Validates Zip Code\"] = /L1J4G1/.test(jsonData[0].zip);",
+              "tests[\"[Team 1]Validates Sport\"] = /Baseball/.test(jsonData[0].sport);",
+              "tests[\"[Team 1]Validates If the team is Standalone\"] = /false/.test(jsonData[0].is_standalone);",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              "",
+              ""
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "authentication-token",
+            "value": "{{login-token}}"
+          }
+        ],
+        "body": {},
+        "url": "{{environment}}/teams",
+        "description": null
+      },
+      "response": []
+    },
+    {
+      "_postman_id": "f16624b4-a3c9-0f9c-2844-a668634b561e",
+      "name": "{{environment}}/events",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "1f646f1f-5125-4fda-85f0-89e852c4d2fb",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "pm.test(\"Verify that response is not null or an empty array\", function () { ",
+              "    pm.expect(responseBody).to.not.equal(null || \"[]\");",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "authentication-token",
+            "value": "{{login-token}}"
+          }
+        ],
+        "body": {},
+        "url": "{{environment}}/events",
+        "description": null
+      },
+      "response": []
+    }
+  ]
+}
