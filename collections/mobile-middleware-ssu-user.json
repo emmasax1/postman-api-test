@@ -363,10 +363,12 @@
         {
           "listen": "test",
           "script": {
-            "id": "5366e9a1-366e-4b30-b736-c46a5884f119",
+            "id": "bcf3ca43-f42a-4904-82d9-db86a23945a4",
             "type": "text/javascript",
             "exec": [
-              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
               "",
               "",
               "var jsonData = JSON.parse(responseBody);",
