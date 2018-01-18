@@ -77,7 +77,7 @@
     },
     {
       "_postman_id": "06e6f0fa-0285-b914-0bd3-2b9d03eea105",
-      "name": "{{environment}}/hassubaccount/[user email]",
+      "name": "/hassubaccount/[user email]",
       "event": [
         {
           "listen": "test",
