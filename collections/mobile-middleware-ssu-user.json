@@ -109,7 +109,7 @@
     },
     {
       "_postman_id": "4885af53-c3fb-8cff-feb9-4ed250fc86d1",
-      "name": "{{environment}}/hassubaccount/invalid@email.com",
+      "name": "/hassubaccount/invalid@email.com",
       "event": [
         {
           "listen": "test",
