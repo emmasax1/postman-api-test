@@ -109,7 +109,7 @@
     },
     {
       "_postman_id": "4885af53-c3fb-8cff-feb9-4ed250fc86d1",
-      "name": "/hassubaccount/invalid@email.com",
+      "name": "authentication/hassubaccount/invalid@email.com",
       "event": [
         {
           "listen": "test",
@@ -135,7 +135,7 @@
           "raw": ""
         },
         "url": "{{environment}}/authentication/hassubaccount/invalid@email.com",
-        "description": "Asks the MW for an unexisting user email. \"exists\" should return \"false\""
+        "description": "Hits authentication/hassubaccount/ with an unexisting user email. Validates \"exists\"==\"false\""
       },
       "response": []
     },
