@@ -323,6 +323,41 @@
       "response": []
     },
     {
+      "_postman_id": "0680c591-c61b-140d-c112-39e31914fcb6",
+      "name": "/standalone (expected true) copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "5366e9a1-366e-4b30-b736-c46a5884f119",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "",
+              "var jsonData = JSON.parse(responseBody);",
+              "",
+              "tests[\"createTeam equals true\"] = /true/.test(jsonData.createTeam)"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "authentication-token",
+            "value": "{{login-token}}",
+            "description": "Must be set by Login test first"
+          }
+        ],
+        "body": {},
+        "url": "{{environment}}/standalone",
+        "description": "Hits the /standalone endpoint which determines permissions for users to create standalone teams. This test expects the response to return \"true\"."
+      },
+      "response": []
+    },
+    {
       "_postman_id": "f16624b4-a3c9-0f9c-2844-a668634b561e",
       "name": "{{environment}}/events",
       "event": [
