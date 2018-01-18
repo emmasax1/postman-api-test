@@ -323,6 +323,39 @@
       "response": []
     },
     {
+      "_postman_id": "f16624b4-a3c9-0f9c-2844-a668634b561e",
+      "name": "{{environment}}/events",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "1f646f1f-5125-4fda-85f0-89e852c4d2fb",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "pm.test(\"Verify that response is not null or an empty array\", function () { ",
+              "    pm.expect(responseBody).to.not.equal(null || \"[]\");",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "authentication-token",
+            "value": "{{login-token}}"
+          }
+        ],
+        "body": {},
+        "url": "{{environment}}/events",
+        "description": null
+      },
+      "response": []
+    },
+    {
       "_postman_id": "0680c591-c61b-140d-c112-39e31914fcb6",
       "name": "/standalone (expected true) copy",
       "event": [
@@ -354,39 +387,6 @@
         "body": {},
         "url": "{{environment}}/standalone",
         "description": "Hits the /standalone endpoint which determines permissions for users to create standalone teams. This test expects the response to return \"true\"."
-      },
-      "response": []
-    },
-    {
-      "_postman_id": "f16624b4-a3c9-0f9c-2844-a668634b561e",
-      "name": "{{environment}}/events",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "1f646f1f-5125-4fda-85f0-89e852c4d2fb",
-            "type": "text/javascript",
-            "exec": [
-              "tests[\"Status code is 200\"] = responseCode.code === 200;",
-              "",
-              "pm.test(\"Verify that response is not null or an empty array\", function () { ",
-              "    pm.expect(responseBody).to.not.equal(null || \"[]\");",
-              "});"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "method": "GET",
-        "header": [
-          {
-            "key": "authentication-token",
-            "value": "{{login-token}}"
-          }
-        ],
-        "body": {},
-        "url": "{{environment}}/events",
-        "description": null
       },
       "response": []
     }
