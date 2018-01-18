@@ -329,14 +329,15 @@
         {
           "listen": "test",
           "script": {
-            "id": "1f646f1f-5125-4fda-85f0-89e852c4d2fb",
+            "id": "c936ff6b-0b16-4656-abaa-9897f101778c",
             "type": "text/javascript",
             "exec": [
               "tests[\"Status code is 200\"] = responseCode.code === 200;",
               "",
-              "pm.test(\"Verify that response is not null or an empty array\", function () { ",
+              "/*pm.test(\"Verify that response is not null or an empty array\", function () { ",
               "    pm.expect(responseBody).to.not.equal(null || \"[]\");",
-              "});"
+              "});",
+              "*/"
             ]
           }
         }
