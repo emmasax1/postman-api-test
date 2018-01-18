@@ -77,7 +77,7 @@
     },
     {
       "_postman_id": "06e6f0fa-0285-b914-0bd3-2b9d03eea105",
-      "name": "/hassubaccount/[user email]",
+      "name": "authentication/hassubaccount/{{userSSU}}",
       "event": [
         {
           "listen": "test",
@@ -103,7 +103,7 @@
           "raw": ""
         },
         "url": "{{environment}}/authentication/hassubaccount/{{userFull}}",
-        "description": "Asks the MW if the user has an account. If \"exists\" equals \"true\" it means the user has been found on the backend."
+        "description": "Hits authentication/hassubaccount/{{userSSU}}. Validates \"exists\"==\"true\""
       },
       "response": []
     },
