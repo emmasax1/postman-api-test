@@ -108,6 +108,38 @@
       "response": []
     },
     {
+      "_postman_id": "4885af53-c3fb-8cff-feb9-4ed250fc86d1",
+      "name": "/hassubaccount/invalid@email.com",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "4aed4f8e-3b3d-4cca-bd2b-5f2d6ac1f76d",
+            "type": "text/javascript",
+            "exec": [
+              "tests[\"Status code is 200\"] = responseCode.code === 200;",
+              "",
+              "",
+              "var jsonData = JSON.parse(responseBody);",
+              "",
+              "tests[\"exists equals true\"] = /false/.test(jsonData.exists)"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": "{{environment}}/authentication/hassubaccount/invalid@email.com",
+        "description": "Asks the MW for an unexisting user email. \"exists\" should return \"false\""
+      },
+      "response": []
+    },
+    {
       "_postman_id": "34950667-d32c-0949-bd79-ef8ce0922b6e",
       "name": "{{environment}}/tasks",
       "event": [
@@ -137,38 +169,6 @@
         "body": {},
         "url": "{{environment}}/tasks",
         "description": null
-      },
-      "response": []
-    },
-    {
-      "_postman_id": "4885af53-c3fb-8cff-feb9-4ed250fc86d1",
-      "name": "/hassubaccount/invalid@email.com",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "4aed4f8e-3b3d-4cca-bd2b-5f2d6ac1f76d",
-            "type": "text/javascript",
-            "exec": [
-              "tests[\"Status code is 200\"] = responseCode.code === 200;",
-              "",
-              "",
-              "var jsonData = JSON.parse(responseBody);",
-              "",
-              "tests[\"exists equals true\"] = /false/.test(jsonData.exists)"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": ""
-        },
-        "url": "{{environment}}/authentication/hassubaccount/invalid@email.com",
-        "description": "Asks the MW for an unexisting user email. \"exists\" should return \"false\""
       },
       "response": []
     },
