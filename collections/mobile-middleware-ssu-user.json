@@ -71,7 +71,7 @@
             }
           ]
         },
-        "description": "Login as {{userFull}}, verify status code = 200, Verify success = true,\nGets token from response and stores it as environment variable \"login-token\""
+        "description": "Login as {{userSSU}}, verify status code = 200, Verify success = true,\nGets token from response and stores it as environment variable \"login-token\""
       },
       "response": []
     },
