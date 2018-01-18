@@ -357,7 +357,7 @@
     },
     {
       "_postman_id": "0680c591-c61b-140d-c112-39e31914fcb6",
-      "name": "/standalone (false)",
+      "name": "/standalone (true)",
       "event": [
         {
           "listen": "test",
