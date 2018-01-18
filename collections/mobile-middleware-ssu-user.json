@@ -141,7 +141,7 @@
     },
     {
       "_postman_id": "d8a5a48e-4458-a5a8-6c1a-e7092611c05b",
-      "name": "{{environment}}/players",
+      "name": "/players",
       "event": [
         {
           "listen": "test",
