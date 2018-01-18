@@ -291,7 +291,7 @@
     },
     {
       "_postman_id": "34950667-d32c-0949-bd79-ef8ce0922b6e",
-      "name": "{{environment}}/tasks",
+      "name": "/tasks",
       "event": [
         {
           "listen": "test",
