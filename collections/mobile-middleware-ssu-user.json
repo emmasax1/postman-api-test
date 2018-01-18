@@ -200,7 +200,7 @@
     },
     {
       "_postman_id": "d8fcbac1-df8e-ae29-7587-eae4252b949e",
-      "name": "{{environment}}/teams",
+      "name": "/teams",
       "event": [
         {
           "listen": "test",
