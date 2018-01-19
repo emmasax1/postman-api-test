@@ -152,11 +152,15 @@
         {
           "listen": "test",
           "script": {
-            "id": "e1bd5b25-782f-4bcc-8582-7e8da5e972b8",
+            "id": "70850b9b-1a91-470c-8fff-2dd39cdf6ca8",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"Status code is 200\", function () {",
               "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Verify that response is not null or an empty array\", function () { ",
+              "    pm.expect(responseBody).to.not.equal(null || \"[]\");",
               "});",
               "",
               "var jsonData = JSON.parse(responseBody);",
