@@ -1,5 +1,5 @@
 {
-  "id": "fbeb1442-0b62-76bc-f782-e96b0c4f7fa4",
+  "id": "3e51cd5f-98b6-e630-70a2-c489ae2d9141",
   "name": "middleware_production",
   "values": [
     {
@@ -22,13 +22,25 @@
     },
     {
       "enabled": true,
+      "key": "userSSU",
+      "type": "text",
+      "value": "lumoreno2312%2Bparentaccount%40gmail.com"
+    },
+    {
+      "enabled": true,
+      "key": "userSSUPassword",
+      "type": "text",
+      "value": "SIPlutest01"
+    },
+    {
+      "enabled": true,
       "key": "login-token",
       "type": "text",
-      "value": "31f0252e0acd815f535e56d2f0b10a4330919952c366db4df6a8cedbc40c4705b6a4e48979fb153699f300ebef4d3a85cb0cbef88e4beabcb36974ab0747d4e1"
+      "value": "37926664fc66f023133bf7bb6cdf8018ba08e4efdf1701456227254db1bb9ce4b6a4e48979fb153699f300ebef4d3a85cb0cbef88e4beabcb36974ab0747d4e1"
     }
   ],
-  "timestamp": 1515701346218,
+  "timestamp": 1516309993246,
   "_postman_variable_scope": "environment",
-  "_postman_exported_at": "2018-01-15T16:19:26.237Z",
+  "_postman_exported_at": "2018-01-19T14:14:50.156Z",
   "_postman_exported_using": "Postman/5.5.0"
 }
