@@ -448,6 +448,36 @@
         "description": null
       },
       "response": []
+    },
+    {
+      "_postman_id": "57c7b112-df34-f85e-ea6f-574b13de5193",
+      "name": "{{environment}}/authentication/forgotpassword/{{userFull}} copy",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "f828413b-588d-4f75-9f85-ab2d5a14ead7",
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "var jsonData = JSON.parse(responseBody);",
+              "",
+              "tests[\"exists equals true\"] = /OK/.test(jsonData.result)"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": "{{environment}}/authentication/forgotpassword/{{userFull}}",
+        "description": null
+      },
+      "response": []
     }
   ]
 }
