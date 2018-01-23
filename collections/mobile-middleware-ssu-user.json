@@ -418,6 +418,36 @@
         "description": "Hits the /standalone endpoint which determines permissions for users to create standalone teams. This test expects the response to return \"true\"."
       },
       "response": []
+    },
+    {
+      "_postman_id": "8a7a2dbf-4d2b-35bc-0d86-971c30bbe182",
+      "name": "{{environment}}/authentication/forgotpassword/{{userFull}}",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "f828413b-588d-4f75-9f85-ab2d5a14ead7",
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "var jsonData = JSON.parse(responseBody);",
+              "",
+              "tests[\"exists equals true\"] = /OK/.test(jsonData.result)"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {},
+        "url": "{{environment}}/authentication/forgotpassword/{{userFull}}",
+        "description": null
+      },
+      "response": []
     }
   ]
 }
