@@ -269,12 +269,6 @@
       ]
     },
     {
-      "_postman_id": "12c2d3e0-905a-7463-75c1-acecc54fdcdb",
-      "name": "singup (standalone user)",
-      "description": "",
-      "item": []
-    },
-    {
       "_postman_id": "d8a5a48e-4458-a5a8-6c1a-e7092611c05b",
       "name": "/players",
       "event": [
