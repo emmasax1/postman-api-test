@@ -149,6 +149,36 @@
             "description": "Hits authentication/hassubaccount/ with an unexisting user email. Validates \"exists\"==\"false\""
           },
           "response": []
+        },
+        {
+          "_postman_id": "8a7a2dbf-4d2b-35bc-0d86-971c30bbe182",
+          "name": "{{environment}}/authentication/forgotpassword/{{userFull}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "b15d8efa-58c9-442f-b62d-a0e9bde98653",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"result equals OK\"] = /OK/.test(jsonData.result)"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": "{{environment}}/authentication/forgotpassword/{{userFull}}",
+            "description": null
+          },
+          "response": []
         }
       ]
     },
@@ -423,36 +453,6 @@
         "body": {},
         "url": "{{environment}}/standalone",
         "description": "Hits the /standalone endpoint which determines permissions for users to create standalone teams. This test expects the response to return \"true\"."
-      },
-      "response": []
-    },
-    {
-      "_postman_id": "8a7a2dbf-4d2b-35bc-0d86-971c30bbe182",
-      "name": "{{environment}}/authentication/forgotpassword/{{userFull}}",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "b15d8efa-58c9-442f-b62d-a0e9bde98653",
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"Status code is 200\", function () {",
-              "    pm.response.to.have.status(200);",
-              "});",
-              "",
-              "var jsonData = JSON.parse(responseBody);",
-              "",
-              "tests[\"result equals OK\"] = /OK/.test(jsonData.result)"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "method": "GET",
-        "header": [],
-        "body": {},
-        "url": "{{environment}}/authentication/forgotpassword/{{userFull}}",
-        "description": null
       },
       "response": []
     },
