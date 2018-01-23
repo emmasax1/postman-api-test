@@ -7,6 +7,12 @@
   },
   "item": [
     {
+      "_postman_id": "4f09e705-59a7-8dd3-5d29-3165316293b9",
+      "name": "Login",
+      "description": "",
+      "item": []
+    },
+    {
       "_postman_id": "d51276da-386e-6eee-842a-422ae8e0c7aa",
       "name": "/authentication/customers/login",
       "event": [
