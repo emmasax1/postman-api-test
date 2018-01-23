@@ -115,42 +115,42 @@
             "description": "Hits authentication/hassubaccount/{{userSSU}}. Validates \"exists\"==\"true\""
           },
           "response": []
+        },
+        {
+          "_postman_id": "4885af53-c3fb-8cff-feb9-4ed250fc86d1",
+          "name": "authentication/hassubaccount/invalid@email.com",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "3b5e7767-e404-4d5e-8e47-12e49ab850a0",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"exists equals true\"] = /false/.test(jsonData.exists)"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{environment}}/authentication/hassubaccount/invalid@email.com",
+            "description": "Hits authentication/hassubaccount/ with an unexisting user email. Validates \"exists\"==\"false\""
+          },
+          "response": []
         }
       ]
-    },
-    {
-      "_postman_id": "4885af53-c3fb-8cff-feb9-4ed250fc86d1",
-      "name": "authentication/hassubaccount/invalid@email.com",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "3b5e7767-e404-4d5e-8e47-12e49ab850a0",
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"Status code is 200\", function () {",
-              "    pm.response.to.have.status(200);",
-              "});",
-              "",
-              "",
-              "var jsonData = JSON.parse(responseBody);",
-              "",
-              "tests[\"exists equals true\"] = /false/.test(jsonData.exists)"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": ""
-        },
-        "url": "{{environment}}/authentication/hassubaccount/invalid@email.com",
-        "description": "Hits authentication/hassubaccount/ with an unexisting user email. Validates \"exists\"==\"false\""
-      },
-      "response": []
     },
     {
       "_postman_id": "d8a5a48e-4458-a5a8-6c1a-e7092611c05b",
