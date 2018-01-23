@@ -426,7 +426,7 @@
         {
           "listen": "test",
           "script": {
-            "id": "f828413b-588d-4f75-9f85-ab2d5a14ead7",
+            "id": "b15d8efa-58c9-442f-b62d-a0e9bde98653",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"Status code is 200\", function () {",
@@ -435,7 +435,7 @@
               "",
               "var jsonData = JSON.parse(responseBody);",
               "",
-              "tests[\"exists equals true\"] = /OK/.test(jsonData.result)"
+              "tests[\"result equals OK\"] = /OK/.test(jsonData.result)"
             ]
           }
         }
