@@ -448,6 +448,70 @@
         "description": null
       },
       "response": []
+    },
+    {
+      "_postman_id": "2509636e-4419-ccad-0e95-855c88f225b2",
+      "name": "{{environment}}/standalone/user",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "0a509a11-aa84-4374-b937-40a7e5e2a70f",
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "",
+              "var jsonData = JSON.parse(responseBody);",
+              "",
+              "/*",
+              "pm.test(\"token is empty\", function () { ",
+              "    pm.expect(jsonData).to.equal(",
+              "        {",
+              "            \"token\": {}",
+              "        }",
+              "    ); ",
+              "});",
+              "",
+              "*/"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "email",
+              "value": "newuser@mailinator.com",
+              "type": "text"
+            },
+            {
+              "key": "firstName",
+              "value": "New",
+              "type": "text"
+            },
+            {
+              "key": "lastName",
+              "value": "User",
+              "type": "text"
+            }
+          ]
+        },
+        "url": "{{environment}}/standalone/user",
+        "description": null
+      },
+      "response": []
     }
   ]
 }
