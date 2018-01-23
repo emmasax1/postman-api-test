@@ -8,7 +8,7 @@
   "item": [
     {
       "_postman_id": "4f09e705-59a7-8dd3-5d29-3165316293b9",
-      "name": "Login",
+      "name": "Login/Signup",
       "description": "",
       "item": [
         {
@@ -243,6 +243,28 @@
             "description": null
           },
           "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "04987b38-698c-4e94-9155-8b66901d64ea",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "id": "62789ed4-da21-4d64-a8f0-e7d6141af60a",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
         }
       ]
     },
