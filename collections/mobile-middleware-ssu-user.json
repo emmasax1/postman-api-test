@@ -81,42 +81,42 @@
             "description": "Login as {{userSSU}}, verify status code = 200, Verify success = true,\nGets token from response and stores it as environment variable \"login-token\""
           },
           "response": []
+        },
+        {
+          "_postman_id": "06e6f0fa-0285-b914-0bd3-2b9d03eea105",
+          "name": "authentication/hassubaccount/{{userSSU}}",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "5bda3bf6-6ae9-40d9-aebf-11b1205fd9b4",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "tests[\"exists equals true\"] = /true/.test(jsonData.exists)"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": "{{environment}}/authentication/hassubaccount/{{userFull}}",
+            "description": "Hits authentication/hassubaccount/{{userSSU}}. Validates \"exists\"==\"true\""
+          },
+          "response": []
         }
       ]
-    },
-    {
-      "_postman_id": "06e6f0fa-0285-b914-0bd3-2b9d03eea105",
-      "name": "authentication/hassubaccount/{{userSSU}}",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "id": "5bda3bf6-6ae9-40d9-aebf-11b1205fd9b4",
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"Status code is 200\", function () {",
-              "    pm.response.to.have.status(200);",
-              "});",
-              "",
-              "",
-              "var jsonData = JSON.parse(responseBody);",
-              "",
-              "tests[\"exists equals true\"] = /true/.test(jsonData.exists)"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "method": "GET",
-        "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": ""
-        },
-        "url": "{{environment}}/authentication/hassubaccount/{{userFull}}",
-        "description": "Hits authentication/hassubaccount/{{userSSU}}. Validates \"exists\"==\"true\""
-      },
-      "response": []
     },
     {
       "_postman_id": "4885af53-c3fb-8cff-feb9-4ed250fc86d1",
