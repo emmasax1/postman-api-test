@@ -10,78 +10,79 @@
       "_postman_id": "4f09e705-59a7-8dd3-5d29-3165316293b9",
       "name": "Login",
       "description": "",
-      "item": []
-    },
-    {
-      "_postman_id": "d51276da-386e-6eee-842a-422ae8e0c7aa",
-      "name": "/authentication/customers/login",
-      "event": [
+      "item": [
         {
-          "listen": "test",
-          "script": {
-            "id": "ee3edd30-ac8d-4a59-8bb1-e48da7f41fb8",
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"Status code is 200\", function () {",
-              "    pm.response.to.have.status(200);",
-              "});",
-              "",
-              "",
-              "var jsonData = JSON.parse(responseBody);",
-              "",
-              "",
-              "tests[\"dt is Present\"] = _.has(jsonData, \"dt\");",
-              "tests[\"ts is Present\"] = _.has(jsonData, \"ts\");",
-              "tests[\"success is Present\"] = _.has(jsonData, \"success\");",
-              "tests[\"message is Present\"] = _.has(jsonData, \"message\");",
-              "tests[\"token is Present\"] = _.has(jsonData.message, \"token\");",
-              "tests[\"sipid is Present\"] = _.has(jsonData.message, \"sipid\");",
-              "",
-              "tests[\"success equals true\"] = /true/.test(jsonData.success)",
-              "",
-              "",
-              "pm.environment.set(\"login-token\", jsonData.message.token);",
-              "",
-              "//tests[`Response: ${JSON.stringify(jsonData)}`] = true;"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "method": "GET",
-        "header": [],
-        "body": {},
-        "url": {
-          "raw": "{{environment}}/authentication/customers/login?email={{userSSU}}&password={{userSSUPassword}}&userdata= HTTP/1.1",
-          "host": [
-            "{{environment}}"
-          ],
-          "path": [
-            "authentication",
-            "customers",
-            "login"
-          ],
-          "query": [
+          "_postman_id": "d51276da-386e-6eee-842a-422ae8e0c7aa",
+          "name": "/authentication/customers/login",
+          "event": [
             {
-              "key": "email",
-              "value": "{{userSSU}}",
-              "equals": true
-            },
-            {
-              "key": "password",
-              "value": "{{userSSUPassword}}",
-              "equals": true
-            },
-            {
-              "key": "userdata",
-              "value": " HTTP/1.1",
-              "equals": true
+              "listen": "test",
+              "script": {
+                "id": "ee3edd30-ac8d-4a59-8bb1-e48da7f41fb8",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "",
+                  "var jsonData = JSON.parse(responseBody);",
+                  "",
+                  "",
+                  "tests[\"dt is Present\"] = _.has(jsonData, \"dt\");",
+                  "tests[\"ts is Present\"] = _.has(jsonData, \"ts\");",
+                  "tests[\"success is Present\"] = _.has(jsonData, \"success\");",
+                  "tests[\"message is Present\"] = _.has(jsonData, \"message\");",
+                  "tests[\"token is Present\"] = _.has(jsonData.message, \"token\");",
+                  "tests[\"sipid is Present\"] = _.has(jsonData.message, \"sipid\");",
+                  "",
+                  "tests[\"success equals true\"] = /true/.test(jsonData.success)",
+                  "",
+                  "",
+                  "pm.environment.set(\"login-token\", jsonData.message.token);",
+                  "",
+                  "//tests[`Response: ${JSON.stringify(jsonData)}`] = true;"
+                ]
+              }
             }
-          ]
-        },
-        "description": "Login as {{userSSU}}, verify status code = 200, Verify success = true,\nGets token from response and stores it as environment variable \"login-token\""
-      },
-      "response": []
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {},
+            "url": {
+              "raw": "{{environment}}/authentication/customers/login?email={{userSSU}}&password={{userSSUPassword}}&userdata= HTTP/1.1",
+              "host": [
+                "{{environment}}"
+              ],
+              "path": [
+                "authentication",
+                "customers",
+                "login"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "{{userSSU}}",
+                  "equals": true
+                },
+                {
+                  "key": "password",
+                  "value": "{{userSSUPassword}}",
+                  "equals": true
+                },
+                {
+                  "key": "userdata",
+                  "value": " HTTP/1.1",
+                  "equals": true
+                }
+              ]
+            },
+            "description": "Login as {{userSSU}}, verify status code = 200, Verify success = true,\nGets token from response and stores it as environment variable \"login-token\""
+          },
+          "response": []
+        }
+      ]
     },
     {
       "_postman_id": "06e6f0fa-0285-b914-0bd3-2b9d03eea105",
