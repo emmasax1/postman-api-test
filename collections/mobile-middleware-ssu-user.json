@@ -179,7 +179,36 @@
             "description": null
           },
           "response": []
+        }
+      ],
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "id": "04987b38-698c-4e94-9155-8b66901d64ea",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
         },
+        {
+          "listen": "test",
+          "script": {
+            "id": "62789ed4-da21-4d64-a8f0-e7d6141af60a",
+            "type": "text/javascript",
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "_postman_id": "12c2d3e0-905a-7463-75c1-acecc54fdcdb",
+      "name": "singup (standalone user)",
+      "description": "",
+      "item": [
         {
           "_postman_id": "2509636e-4419-ccad-0e95-855c88f225b2",
           "name": "{{environment}}/standalone/user",
@@ -243,28 +272,6 @@
             "description": null
           },
           "response": []
-        }
-      ],
-      "event": [
-        {
-          "listen": "prerequest",
-          "script": {
-            "id": "04987b38-698c-4e94-9155-8b66901d64ea",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
-        },
-        {
-          "listen": "test",
-          "script": {
-            "id": "62789ed4-da21-4d64-a8f0-e7d6141af60a",
-            "type": "text/javascript",
-            "exec": [
-              ""
-            ]
-          }
         }
       ]
     },
