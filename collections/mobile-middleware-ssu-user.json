@@ -18,7 +18,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "2f917599-f906-4267-b1ca-c588dbbb9f0b",
+                "id": "506ed0eb-a851-40b1-9999-27f9c406318a",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
@@ -28,7 +28,7 @@
                   "",
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "/////////////////////Tests/////////////////////",
+                  "///////////////////////////////////////////////",
                   "",
                   "tests[\"dt is Present\"] = _.has(jsonData, \"dt\");",
                   "tests[\"ts is Present\"] = _.has(jsonData, \"ts\");",
