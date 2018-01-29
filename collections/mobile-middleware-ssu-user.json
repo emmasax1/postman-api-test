@@ -367,7 +367,7 @@
         {
           "listen": "test",
           "script": {
-            "id": "34419f62-fbf2-4871-a625-5e41183edaf1",
+            "id": "c923a9cc-9a73-4805-aa83-3b47e7f083a8",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"Status code is 200\", function () {",
@@ -381,7 +381,7 @@
               "var jsonData = JSON.parse(responseBody);",
               "",
               "",
-              "/////////////////////Tests/////////////////////",
+              "///////////////////////////////////////////////",
               "",
               "tests[\"[Team 1]Validates SS attribute\"] = /SS/.test(jsonData[0].ss);",
               "tests[\"[Team 1]Validates SS ID attribute\"] = /1008381/.test(jsonData[0].ssid);",
@@ -433,8 +433,6 @@
               "tests[\"[Team 1]Validates Zip Code\"] = /L1J4G1/.test(jsonData[0].zip);",
               "tests[\"[Team 1]Validates Sport\"] = /Baseball/.test(jsonData[0].sport);",
               "tests[\"[Team 1]Validates If the team is Standalone\"] = /false/.test(jsonData[0].is_standalone);",
-              "",
-              "///////////////////////////////////////////////",
               "",
               "",
               "",
