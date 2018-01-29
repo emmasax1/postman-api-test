@@ -298,7 +298,7 @@
         {
           "listen": "test",
           "script": {
-            "id": "5f366335-6efc-4f8c-87c7-03cde6e8a238",
+            "id": "1e77236b-a330-4845-a6c1-a401ed62aef5",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"Status code is 200\", function () {",
@@ -310,6 +310,8 @@
               "});",
               "",
               "var jsonData = JSON.parse(responseBody);",
+              "",
+              "/////////////////////Tests for Parent User/////////////////////",
               "",
               "tests[\"[Parent]Validates person ID in Most Recent Photo\"] = /15296174/.test(jsonData[0].PersonIdOfMostRecentPhoto);",
               "tests[\"[Parent]Validates league ID in Most Recent Photo\"] = /15000452/.test(jsonData[0].LeagueIdOfMostRecentPhoto);",
@@ -324,6 +326,8 @@
               "pm.test(\"Validates image URL\", function () { ",
               "    pm.expect(jsonData[0].image_url).to.contain(\"https://app1.siplay.com//Files/PersonCSImage\"); ",
               "});",
+              "",
+              "/////////////////////Tests for Child User/////////////////////",
               "",
               "tests[\"[Child 1]Validates person ID is NULL in Most Recent Photo\"] = /null/.test(jsonData[1].PersonIdOfMostRecentPhoto);",
               "tests[\"[Child 1]Validates league ID is NULL Most Recent Photo\"] = /null/.test(jsonData[1].LeagueIdOfMostRecentPhoto);",
