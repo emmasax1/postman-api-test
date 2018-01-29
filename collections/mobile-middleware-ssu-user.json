@@ -18,7 +18,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "ee3edd30-ac8d-4a59-8bb1-e48da7f41fb8",
+                "id": "03f30e83-ce66-42d5-b5e1-280f110fc309",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
@@ -38,6 +38,9 @@
                   "",
                   "tests[\"success equals true\"] = /true/.test(jsonData.success)",
                   "",
+                  "pm.test(\"Verify sipid does not contain 'undefined'\", function () { ",
+                  "    pm.expect(jsonData.message.sipid).to.not.contain(\"undefined\");",
+                  "});",
                   "",
                   "pm.environment.set(\"login-token\", jsonData.message.token);",
                   "",
