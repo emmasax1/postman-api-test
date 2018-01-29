@@ -18,7 +18,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "03f30e83-ce66-42d5-b5e1-280f110fc309",
+                "id": "2f917599-f906-4267-b1ca-c588dbbb9f0b",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
@@ -28,6 +28,7 @@
                   "",
                   "var jsonData = JSON.parse(responseBody);",
                   "",
+                  "/////////////////////Tests/////////////////////",
                   "",
                   "tests[\"dt is Present\"] = _.has(jsonData, \"dt\");",
                   "tests[\"ts is Present\"] = _.has(jsonData, \"ts\");",
@@ -42,9 +43,9 @@
                   "    pm.expect(jsonData.message.sipid).to.not.contain(\"undefined\");",
                   "});",
                   "",
-                  "pm.environment.set(\"login-token\", jsonData.message.token);",
+                  "///////////////////////////////////////////////",
                   "",
-                  "//tests[`Response: ${JSON.stringify(jsonData)}`] = true;"
+                  "pm.environment.set(\"login-token\", jsonData.message.token);"
                 ]
               }
             }
