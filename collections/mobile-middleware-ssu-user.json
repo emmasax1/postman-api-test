@@ -169,7 +169,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "b15d8efa-58c9-442f-b62d-a0e9bde98653",
+                "id": "9cc933cb-7d99-456a-9ceb-a76a1cc642ef",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
@@ -178,7 +178,11 @@
                   "",
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "tests[\"result equals OK\"] = /OK/.test(jsonData.result)"
+                  "/////////////////////Tests/////////////////////",
+                  "",
+                  "tests[\"result equals OK\"] = /OK/.test(jsonData.result)",
+                  "",
+                  "///////////////////////////////////////////////"
                 ]
               }
             }
