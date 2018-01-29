@@ -93,7 +93,7 @@
             {
               "listen": "test",
               "script": {
-                "id": "50138fcb-be20-497e-98cf-d31a07bf7590",
+                "id": "542761ba-f30d-4b51-95e1-f22606a6b742",
                 "type": "text/javascript",
                 "exec": [
                   "pm.test(\"Status code is 200\", function () {",
@@ -103,11 +103,9 @@
                   "",
                   "var jsonData = JSON.parse(responseBody);",
                   "",
-                  "/////////////////////Tests/////////////////////",
+                  "///////////////////////////////////////////////",
                   "",
-                  "tests[\"exists equals true\"] = /true/.test(jsonData.exists)",
-                  "",
-                  "///////////////////////////////////////////////"
+                  "tests[\"exists equals true\"] = /true/.test(jsonData.exists)"
                 ]
               }
             }
