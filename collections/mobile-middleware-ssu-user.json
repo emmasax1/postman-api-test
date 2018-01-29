@@ -457,7 +457,7 @@
         {
           "listen": "test",
           "script": {
-            "id": "80197845-cba5-400f-88c7-d21b514f0471",
+            "id": "8cec0100-7be5-4151-9f2f-c327dd97a75e",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"Status code is 200\", function () {",
@@ -469,6 +469,8 @@
               "});",
               "",
               "var jsonData = JSON.parse(responseBody);",
+              "",
+              "///////////////////////////////////////////////",
               "",
               "tests[\"Verifies family invite task is present\"] = /family_invite/.test(jsonData[0].taskType)"
             ]
