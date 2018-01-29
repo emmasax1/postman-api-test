@@ -534,7 +534,7 @@
         {
           "listen": "test",
           "script": {
-            "id": "bcf3ca43-f42a-4904-82d9-db86a23945a4",
+            "id": "f6b62980-8495-4d84-9d73-a7c99a464cfd",
             "type": "text/javascript",
             "exec": [
               "pm.test(\"Status code is 200\", function () {",
@@ -543,6 +543,8 @@
               "",
               "",
               "var jsonData = JSON.parse(responseBody);",
+              "",
+              "///////////////////////////////////////////////",
               "",
               "tests[\"createTeam equals true\"] = /true/.test(jsonData.createTeam)"
             ]
